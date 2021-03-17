@@ -19,9 +19,10 @@ namespace fnGithubAction
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            //Extract name from query parameter
+            //Extract name value from query parameter
             string name = req.Query["name"];
 
+            //Extract name value from the request body
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
